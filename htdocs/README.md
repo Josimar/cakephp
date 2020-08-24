@@ -51,3 +51,24 @@ Other environment agnostic settings can be changed in `config/app.php`.
 The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+## Começando
+
+### ajuda dos comandos no diretório raiz /apps/cakephp/htdocs
+bin/cake --help 
+
+### Criar tabela
+bin/cake bake migration CreateUsers id:integer:primary name:string lastname:string email:string phone:string password:string token:string status:integer created:datetime modified:datetime deleted:datetime 
+
+bin/cake bake migration CreateColleges id:integer:primary name:string shortname:string email:string description:string location:string totalfaculty:integer imageurl:string phone:string status:integer created:datetime modified:datetime deleted:datetime 
+
+bin/cake bake migration CreateBranches id:integer:primary name:string description:string collegid:integer startdate:datetime enddate:datetime totalseats:integer totaldurations:integer status:integer created:datetime modified:datetime deleted:datetime 
+
+bin/cake bake migration CreateStudents id:integer:primary name:string email:string phone:string collegid:integer branchid:integer address:string bloodgroup:string gender:string urlimage:string dob:string status:integer created:datetime modified:datetime deleted:datetime 
+
+bin/cake bake migration CreateStaffs id:integer:primary name:string email:string phone:string collegid:integer designation:string stafftype:string branchid:integer address:string bloodgroup:string gender:string urlimage:string dob:string status:integer created:datetime modified:datetime deleted:datetime 
+
+bin/cake bake migration CreateTransportes id:integer:primary nome:string tipo:string descricao:string urlfoto:string urlvideo:string latitude:string logitude:string created:datetime modified:datetime deleted:datetime 
+
+### Verificar status das migrations
+bin/cake migrations status
