@@ -23,6 +23,7 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 
 /*
  * The default class to use for all routes
@@ -43,6 +44,11 @@ use Cake\Routing\RouteBuilder;
  */
 /** @var \Cake\Routing\RouteBuilder $routes */
 $routes->setRouteClass(DashedRoute::class);
+
+/* Application Routes */
+Router::prefix("admin", function(RouteBuilder $route){
+    $route->connect("/", ["controller"=>"Dashboards", "action"=>"index"]);
+});
 
 $routes->scope('/', function (RouteBuilder $builder) {
     /*

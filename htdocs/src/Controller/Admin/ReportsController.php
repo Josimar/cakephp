@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
-use App\Controller\AppController\Admin;
+use App\Controller\AppController;
 
 class ReportsController extends AppController{
 
