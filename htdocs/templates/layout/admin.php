@@ -7,21 +7,14 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/cakephp/plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="/cakephp/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <link rel="stylesheet" href="/cakephp/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <link rel="stylesheet" href="/cakephp/plugins/jqvmap/jqvmap.min.css">
-  <link rel="stylesheet" href="/cakephp/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="/cakephp/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
     <?=
       $this->Html->css([
-        "/plugins/fontawesome-free/css/all.min.css",
-        "/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" ,
-        "/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
-        "/plugins/jqvmap/jqvmap.min.css",
-        "/dist/css/adminlte.min.css",
-        "/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+        "../../plugins/fontawesome-free/css/all.min.css",
+        "../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" ,
+        "../../plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+        "../../plugins/jqvmap/jqvmap.min.css",
+        "../../dist/css/adminlte.min.css",
+        "../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
       ])
     ?>
 
@@ -51,23 +44,15 @@
 </div>
 <!-- ./wrapper -->
 
-<script src="/cakephp/plugins/jquery/jquery.min.js"></script>
-<script src="/cakephp/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="/cakephp/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/cakephp/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="/cakephp/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<script src="/cakephp/dist/js/adminlte.js"></script>
-<script src="/cakephp/dist/js/pages/dashboard.js"></script>
-
 <?=
     $this->Html->script([
-        "/plugins/jquery/jquery.min.js",
-        "/plugins/jquery-ui/jquery-ui.min.js",
-        "/plugins/bootstrap/js/bootstrap.bundle.min.js",
-        "/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
-        "/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
-        "/dist/js/adminlte.js",
-        "/dist/js/pages/dashboard.js"
+        "../../plugins/jquery/jquery.min.js",
+        "../../plugins/jquery-ui/jquery-ui.min.js",
+        "../../plugins/bootstrap/js/bootstrap.bundle.min.js",
+        "../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+        "../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+        "../../dist/js/adminlte.js",
+        "../../dist/js/pages/dashboard.js"
     ])
 ?>
 
