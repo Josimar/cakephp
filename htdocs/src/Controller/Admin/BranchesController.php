@@ -8,8 +8,24 @@ class BranchesController extends AppController{
 
     public function initialize(): void{
         parent::initialize();
+        $this->viewBuilder()->setLayout("admin");
     }
 
+    public function addBranch(){
+        $this->set("title", "Add Branch | Academics Management");
+    }
+
+    public function listBranch(){
+        $this->set("title", "List Branch | Academics Management");
+    }
+    
+    public function editBranch($id = null){
+        $this->set("title", "Edit Branch | Academics Management");
+    }
+
+    public function deleteBranch($id = null){
+
+    }
     
 
 }

@@ -46,7 +46,7 @@ $(function () {
   })
 
   /* jQueryKnob */
-  $('.knob').knob()
+  // $('.knob').knob()
 
   // jvectormap data
   var visitorsData = {
@@ -63,6 +63,7 @@ $(function () {
     'RU': 3000 //Russia
   }
   // World map by jvectormap
+  /*
   $('#world-map').vectorMap({
     map              : 'usa_en',
     backgroundColor  : 'transparent',
@@ -107,12 +108,13 @@ $(function () {
   $('#chat-box').overlayScrollbars({
     height: '250px'
   })
+  */
 
   /* Chart.js Charts */
   // Sales chart
-  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
+  // var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
   //$('#revenue-chart').get(0).getContext('2d');
-
+  /*
   var salesChartData = {
     labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
@@ -260,5 +262,5 @@ $(function () {
       options: salesGraphChartOptions
     }
   )
-
+  */
 })

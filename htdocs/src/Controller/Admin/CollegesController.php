@@ -8,9 +8,24 @@ class CollegesController extends AppController{
 
     public function initialize(): void{
         parent::initialize();
+        $this->viewBuilder()->setLayout("admin");
     }
 
+    public function addCollege(){
+        $this->set("title", "Add College | Academics Management");
+    }
+
+    public function listCollege(){
+        $this->set("title", "List College | Academics Management");
+    }
     
+    public function editCollege($id = null){
+        $this->set("title", "Edit College | Academics Management");
+    }
+
+    public function deleteCollege($id = null){
+
+    }
 
 }
 
