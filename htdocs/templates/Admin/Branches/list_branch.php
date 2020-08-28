@@ -31,7 +31,7 @@ $this->Html->css([
                     <h3 class="card-title">List Branch</h3>
                 </div>
                 <div class="card-body">
-                <table id="tbl-branchs" class="table table-bordered table-striped">
+                <table id="tbl-branch" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>#ID</th>
@@ -43,7 +43,28 @@ $this->Html->css([
                   </tr>
                   </thead>
                   <tbody>
-
+                  <?php
+                      if (count($branches) > 0){
+                        foreach($branches as $index => $branch){
+                          ?>
+                          <tr>
+                            <td><?= $branch->id ?></td>
+                            <td><?= "<b>Name:</b> ".$branch->name."<br/><b>SessionStart:</b> ".$branch->startdate."<br/><b>SessionEnd:</b> ".$branch->enddate ?></td>
+                            <td><?= isset($branch->branch_college->name) ? $branch->branch_college->name : "N/A" ?></td>
+                            <td><?= $branch->totalseats ?></td>
+                            <td><?= $branch->totaldurations ?></td>
+                            <td>
+                              <form id="frm-delete-branch-<?= $branch->id ?>" action="<?= $this->Url->build('/admin/delete-branch'.$branch->id) ?>" method="post">
+                                <input type="hidden" value="<?= $branch->id ?>" name="id" id="id">
+                              </form>
+                              <a href="<?= $this->Url->build('/admin/edit-branch/'.$branch->id, ['fullBase'=>true]) ?>" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
+                              <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete?')){ $('#frm-delete-branch-<?= $branch->id ?>').submit() }" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                            </td>
+                          </tr>
+                          <?php
+                        }
+                      }
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>
@@ -74,6 +95,6 @@ $this->Html->script([
 
 <?php
 $this->Html->scriptStart(["block"=>true]);
-echo('$("#tbl-branchs").DataTable();');
+echo('$("#tbl-branch").DataTable();');
 $this->Html->scriptEnd();
 ?>

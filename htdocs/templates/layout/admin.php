@@ -35,6 +35,7 @@
     <?= $this->element("left-sidebar") ?>
 
       <div class="content-wrapper">
+        <?= $this->Flash->render() ?>
         <?= $this->fetch("content") ?>
       </div>
 

@@ -37,7 +37,11 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
              <h3 class="card-title">Add Branch</h3>
             </div>
             <div class="card-body">
-            <form id="frm-add-branch">
+            <?=
+            $this->Form->create($branch, [
+                "id"=>"frm-add-branch"
+            ])
+            ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -53,11 +57,18 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
                     </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label>Select College *</label>
                             <select required class="form-control" name="collegeid" id="collegeid">
-                                <option value='1'>Sample College</option>
+                                <option value=''>Choose College</option>
+                                <?php
+                                    if (count($colleges) > 0){
+                                        foreach ($colleges as $index => $college){
+                                            echo ("<option value='.$college->id.'>".$college->name."</option>");
+                                        }
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -104,7 +115,7 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
                         </div>
                     </div>
                 </div>
-            </form>
+            <?= $this->Form->end() ?>
             </div>
         </div>
         </div>

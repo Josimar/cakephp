@@ -39,6 +39,29 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-university"></i>
               <p>
+                Manage Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/add-user', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/list-users', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-university"></i>
+              <p>
                 Manage College
                 <i class="right fas fa-angle-left"></i>
               </p>
@@ -146,6 +169,52 @@
                 <a href="<?= $this->Url->build('/admin/list-transporte', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Transporte</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>
+                Manage Papeis
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/add-papel', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Papel</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/list-papel', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Papeis</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>
+                Manage Permissão
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/add-permissao', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Permissão</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/list-permissoes', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Permissão</p>
                 </a>
               </li>
             </ul>

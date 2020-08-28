@@ -58,7 +58,11 @@ Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/papel-report", ["controller"=>"Reports", "action"=>"papelReports"]);
     $route->connect("/permissao-report", ["controller"=>"Reports", "action"=>"permissaoReports"]);
     $route->connect("/transporte-report", ["controller"=>"Reports", "action"=>"transporteReports"]);
-    $route->connect("/users-report", ["controller"=>"Reports", "action"=>"usersReports"]);
+    $route->connect("/user-report", ["controller"=>"Reports", "action"=>"userReports"]);
+    $route->connect("/papel-report", ["controller"=>"Reports", "action"=>"papelReports"]);
+    $route->connect("/permissao-report", ["controller"=>"Reports", "action"=>"permissaoReports"]);
+
+    $route->connect("/allot-college", ["controller"=>"Students", "action"=>"getCollegeBranches"]);
 });
 
 $routes->scope('/', function (RouteBuilder $builder) {

@@ -42,7 +42,27 @@ $this->Html->css([
                   </tr>
                   </thead>
                   <tbody>
-
+                    <?php
+                      if (count($colleges) > 0){
+                        foreach($colleges as $index => $college){
+                          ?>
+                          <tr>
+                            <td><?= $college->id ?></td>
+                            <td><?= "<b>Name:</b> ".$college->name."<br/><b>Email:</b> ".$college->email."<br/><b>Phone:</b> ".$college->phone ?></td>
+                            <td><?= $college->shortname ?></td>
+                            <td><?= $this->Html->image("/upload/".$college->imageurl, ["style"=>"width:70px;height:70px"]) ?></td>
+                            <td>
+                              <form id="frm-delete-college-<?= $college->id ?>" action="<?= $this->Url->build('/admin/delete-college'.$college->id) ?>" method="post">
+                                <input type="hidden" value="<?= $college->id ?>" name="id" id="id">
+                              </form>
+                              <a href="<?= $this->Url->build('/admin/edit-college/'.$college->id, ['fullBase'=>true]) ?>" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
+                              <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete?')){ $('#frm-delete-college-<?= $college->id ?>').submit() }" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                            </td>
+                          </tr>
+                          <?php
+                        }
+                      }
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>

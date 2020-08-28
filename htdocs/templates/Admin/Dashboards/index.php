@@ -32,7 +32,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">Go to User Report <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= $this->Url->build('/admin/user-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to User Report <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 

@@ -34,7 +34,12 @@
              <h3 class="card-title">Add College</h3>
             </div>
             <div class="card-body">
-            <form id="frm-add-college">
+            <?=
+                $this->Form->create($college, [
+                    "id"=>"frm-add-college",
+                    "type"=>"file"
+                ])
+            ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -107,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            <?= $this->Form->end() ?>
             </div>
         </div>
         </div>

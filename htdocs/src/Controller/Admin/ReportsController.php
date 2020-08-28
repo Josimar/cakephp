@@ -35,7 +35,7 @@ class ReportsController extends AppController{
         $this->set("title", "Transporte Report | Academics Management");
     }      
 
-    public function usersReports(){
+    public function userReports(){
         $this->set("title", "Users Report | Academics Management");
     }     
 
