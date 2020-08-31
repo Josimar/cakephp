@@ -23,7 +23,7 @@ class CollegesController extends AppController{
 
             $validExtension = array("image/png", "image/jpg", "image/jpeg", "image/gif");
             if (in_array($fileExtension, $validExtension)){
-                $destination = WWW_ROOT."upload\colleges".DS.$filename;
+                $destination = WWW_ROOT."upload\\colleges".DS.$filename;
                 $fileObject->moveTo($destination);
                 $collegeData = $this->request->getData();
                 $collegeData['imageurl'] = "colleges".DS.$filename;
@@ -60,13 +60,16 @@ class CollegesController extends AppController{
 
             $fileObject = $this->request->getData("imageurl");
             // print_r($fileObject);die;
-            $filename = $fileObject->getClientFilename();
+            $filename = $id.'_'.$fileObject->getClientFilename();
             $fileExtension = $fileObject->getClientMediaType();
 
             if (!empty($filename)){
                 $validExtension = array("image/png", "image/jpg", "image/jpeg", "image/gif");
                 if (in_array($fileExtension, $validExtension)){
-                    $destination = WWW_ROOT."upload\colleges".DS.$filename;
+                    $destination = WWW_ROOT."upload\\colleges".DS.$filename;
+                    if (file_exists($destination)){ 
+                        unlink($destination);
+                    }
                     $fileObject->moveTo($destination);
                     $collegeData['imageurl'] = "colleges".DS.$filename;
                 }else{

@@ -12,6 +12,21 @@ class PermissoesController extends AppController{
     }
 
     public function addPermissao(){
+        $permissao = $this->Permissoes->newEmptyEntity();
+
+        if ($this->request->is("post")){
+            $permissaoData = $this->request->getData();
+
+            $permissao = $this->Permissoes->patchEntity($permissao, $permissaoData);
+            if ($this->Permissoes->save($permissao)){
+                $this->Flash->success("Permissão has been created successfully");
+                return $this->redirect(["action"=>"listPermissao"]);
+            }else{
+                $this->Flash->error("Failed to create Permissão");    
+            }
+        }
+
+        $this->set(compact("permissao"));
         $this->set("title", "Add Permissão | Academics Management");
     }
 

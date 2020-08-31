@@ -221,6 +221,52 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>
+                Manage Categoria
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/add-categoria', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Categoria</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/list-categorias', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Categoria</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-car"></i>
+              <p>
+                Manage Tarefa
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/add-tarefa', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Tarefa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/list-tarefas', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List Tarefa</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Reports
@@ -244,6 +290,18 @@
                 <a href="<?= $this->Url->build('/admin/staff-report', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Staff Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/categoria-report', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categoria Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $this->Url->build('/admin/tarefa-report', ['fullbase'=>true]) ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tarefa Report</p>
                 </a>
               </li>
               <li class="nav-item">

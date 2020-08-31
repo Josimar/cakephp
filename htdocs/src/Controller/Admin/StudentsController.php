@@ -15,6 +15,16 @@ class StudentsController extends AppController{
         $this->loadModel("Branches");
     }
 
+    /*
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        parent::beforeFilter($event);
+
+        if ($this->request->param('action') === 'assignCollegeBranch') {
+            $this->eventManager()->off($this->Csrf);
+        }
+    }
+    */
 
     public function addStudent(){
         $student = $this->Students->newEmptyEntity();
@@ -67,11 +77,57 @@ class StudentsController extends AppController{
     }
     
     public function editStudent($id = null){
+        $student = $this->Students->get($id);
+
+        if ($this->request->is(["post", "put"])){
+            $studentData = $this->request->getData();
+
+            $fileObject = $this->request->getData("urlimage");
+            $filename = $fileObject->getClientFilename();
+
+            if (!empty($filename)){
+                $fileExtension = $fileObject->getClientMediaType();
+
+                $validExtension = array("image/png", "image/jpg", "image/jpeg", "image/gif");
+                if (in_array($fileExtension, $validExtension)){
+                    $destination = WWW_ROOT."upload\students".DS.$filename;
+                    $fileObject->moveTo($destination);
+                    
+                    $studentData['urlimage'] = "students".DS.$filename;
+                }else{
+                    $this->Flash->error("Upload file is not a valid image");
+                    return $this->redirect(["action"=>"listStudent"]);
+                }
+            }else{
+                $studentData['urlimage'] = $student->urlimage;
+            }
+
+            $student = $this->Students->patchEntity($student, $studentData);
+            
+            if ($this->Students->save($student)){
+                $this->Flash->success("Student has been updated successfully");
+            }else{
+                $this->Flash->error("Failed to update Student");    
+            }
+
+            return $this->redirect(["action"=>"listStudent"]);
+        }
+
+        $this->set(compact("student"));
+
         $this->set("title", "Edit Student | Academics Management");
     }
 
     public function deleteStudent($id = null){
+        $this->request->allowMethod(["post" ,"delete"]);
+        $student = $this->Students->get($id);
+        if ($this->Students->delete($student)){
+            $this->Flash->success("Student has been deleted successfully");
+        }else{
+            $this->Flash->error("Failed to delete student");
+        }
 
+        return $this->redirect(["action"=>"listStudent"]);
     }    
 
     public function getCollegeBranches(){
@@ -85,6 +141,42 @@ class StudentsController extends AppController{
             "message" => "Branches found",
             "branches" => $branches
         ));
+    }
+
+    public function assignCollegeBranch(){
+        if ($this->request->is("post")){
+            $studentid = $this->request->getDate("studentid");
+            $student = $this->Students->get($studentid, [
+                "contain"=>[]
+            ]);
+
+            $studentData = $this->request->getData();
+
+            $student = $this->Students->patchEntity($student, $studentData);
+
+            if ($this->Students->save($student)){
+                $this->Flash->success("College Branch assigned successfully to student");
+            }else{
+                $this->Flash->error("Failed to assign college/branch");
+            }
+
+            return $this->redirect(["action"=>"listStudent"]);
+        }
+    }
+
+    public function removeAssignedCollegeBranch($id = null){
+        $student = $this->Students->get($id);
+
+        $student['branchid'] = null;
+        $student['collegeid'] = null;
+
+        if ($this->Students->save($student)){
+            $this->Flash->success("Assigned College/Branch removed successfully");
+        }else{
+            $this->Flash->error("Failed to remove college/branch");
+        }
+
+        return $this->redirect(["action"=>"listStudent"]);
     }
 
 }

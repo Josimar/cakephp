@@ -4,10 +4,10 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class TransportesTable extends Table{
+class papeisTable extends Table{
 
     public function initialize(array $config): void{
-        $this->setTable("transportes");
+        $this->setTable("papeis");
     }
 
 }

@@ -51,23 +51,42 @@ $this->Html->css([
                           <tr>
                             <td><?= $student->id ?></td>
                             <td>
-                              <?= "<b>Name:</b>".$student->name ?><br/>
-                              <?= "<b>Email:</b>".$student->email ?><br/>
-                              <?= "<b>Phone:</b>".$student->phone ?><br/>
-                              <?= "<b>BG:</b>".$student->bloodgroup ?><br/>
+                              <?= "<b>Name: </b>".$student->name ?><br/>
+                              <?= "<b>Email: </b>".$student->email ?><br/>
+                              <?= "<b>Phone: </b>".$student->phone ?><br/>
+                              <?= "<b>BG: </b>".$student->bloodgroup ?><br/>
                             </td>
                             <td>
-                              <button class="btn btn-info btn-allot-modal" data-id="<?= $student->id ?>" data-toggle="modal" data-target="#studentModal">Allow College</button>
+                              <?php
+                              // dd($student);
+                              if (isset($student->student_college->name) && isset($student->student_branch->name)){
+                                echo "<b>College:</b> ".$student->student_college->name;
+                                echo "<br />";
+                                echo "<b>Branch:</b> ".$student->student_branch->name;
+                                echo "<br />";
+                                ?>
+                                  <form action="<?= $this->Url->build('/admin/remove-assigned-college/'.$student->id, ['fullBase'=>true]) ?>" method="post" id="frm-remove-allot-<?= $student->id ?>">
+                                    <input type="hidden" name="studentid" value="<?= $student->id ?>" />
+                                  </form>
+                                  <a href="javascript:void(0)" class="btn-allot-modal" data-id="<?= $student->id ?>" data-toggle="modal" data-target="#studentModal">Change</a> | 
+                                  <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to remove?')){ $('#frm-remove-allot-<?= $student->id ?>').submit() }" class="link-remove-college-branch" data-id="<?= $student->id ?>">Remove</a>
+                                <?php
+                              }else{
+                                ?>
+                                <button class="btn btn-info btn-allot-modal" data-id="<?= $student->id ?>" data-toggle="modal" data-target="#studentModal">Allow College</button>
+                                <?php
+                              }
+                              ?>
                             </td>
                             <td><?= strtoupper($student->gender) ?></td>
                             <td><?= $this->Html->image("/upload/".$student->urlimage, ["style"=>"width:70px;height:70px"]) ?></td>
                             <td><?= $student->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>" ?></td>
                             <td>
-                              <form id="frm-delete-student-<?= $student->id ?>" action="<?= $this->Url->build('/admin/delete-student'.$student->id) ?>" method="post">
+                              <form id="frm-delete-student-<?= $student->id ?>" action="<?= $this->Url->build('/admin/delete-student'.$student->id, ['fullBase'=>true]) ?>" method="post">
                                 <input type="hidden" value="<?= $student->id ?>" name="id" id="id">
                               </form>
                               <a href="<?= $this->Url->build('/admin/edit-student/'.$student->id, ['fullBase'=>true]) ?>" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
-                              <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete?')){ $('#frm-delete-college-<?= $student->id ?>').submit() }" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                              <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete?')){ $('#frm-delete-student-<?= $student->id ?>').submit() }" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
                             </td>
                           </tr>
                           <?php
@@ -104,11 +123,12 @@ $this->Html->css([
         </button>
       </div>
       <div class="modal-body">
-      <form action="javascript:void(0)" method="post">
+      <form id="frm_allot-college" method="post" action="<?= $this->Url->build('/admin/assign-college', ['fullBase'=>true]) ?>">
+        <input type="hidden" id="studentid" name="studentid" value="" />
         <div class="form-group row">
           <label for="dd_college" class="col-sm-4 col-form-label">Select College</label>
           <div class="col-sm-8">
-            <select name="dd_college" id="dd_college" class="form-control">
+            <select name="collegeid" id="dd_college" class="form-control">
               <option value="">Choose College</option>
               <?php
                 if (count($colleges) > 0){
@@ -123,7 +143,7 @@ $this->Html->css([
           </div>
         </div>
         <div class="form-group row">
-          <label for="dd_branch" class="col-sm-4 col-form-label">Select Branch</label>
+          <label for="branchid" class="col-sm-4 col-form-label">Select Branch</label>
           <div class="col-sm-8">
             <select name="dd_branch" id="dd_branch" class="form-control">
               <option value="">Choose Branch</option>
@@ -135,7 +155,7 @@ $this->Html->css([
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
-      </form>
+      <?= $this->Form->end() ?>
       </div>
     </div>
   </div>
@@ -153,6 +173,14 @@ $this->Html->script([
 <?php
 $this->Html->scriptStart(["block"=>true]);
 echo('$("#tbl-students").DataTable();');
+
+// click event
+echo '$(document).on("click", ".btn-allot-modal", function(){
+  var studentid = $(this).attr("data-id");
+  $("#studentid").val(studentid);
+});';
+
+// Ajax request
 echo('$(document).on("change", "#dd_college", function(){
   var collegid = $(this).val(); 
   var postdata = "collegeid="+collegid;

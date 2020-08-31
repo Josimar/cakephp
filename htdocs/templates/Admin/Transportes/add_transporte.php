@@ -5,7 +5,7 @@
 
 ?>
 <style>
-#frm-add-college label.error{
+#frm-add-transporte label.error{
     color: red;
 }
 </style>
@@ -34,7 +34,11 @@
              <h3 class="card-title">Add Transporte</h3>
             </div>
             <div class="card-body">
-            <form id="frm-add-transporte">
+            <?= $this->Form->create($transporte, [
+                "id" => "frm-add-transporte",
+                "type" => "file"
+            ])
+            ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -52,14 +56,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Image url *</label>
-                            <input type="file" required name="urlfoto" id="urlfoto" class="form-control" />
+                            <label>Image url</label>
+                            <input type="file" name="urlfoto" id="urlfoto" class="form-control" />
                         </div>
                     </div> 
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Video url *</label>
-                            <input type="file" required name="urlvideo" id="urlvideo" class="form-control" />
+                            <label>Video url</label>
+                            <input type="text" name="urlvideo" id="urlvideo" placeholder="Enter url video" class="form-control" />
                         </div>
                     </div> 
                 </div>
@@ -78,8 +82,8 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Status *</label>
-                            <select required class="form-control" name="status" id="status">
+                            <label>Tipo *</label>
+                            <select required class="form-control" name="tipo" id="tipo">
                                 <option value='luxo'>Luxo</option>
                                 <option value='popular'>Popular</option>
                             </select>
@@ -93,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+                <?= $this->Form->end() ?>
             </div>
         </div>
         </div>

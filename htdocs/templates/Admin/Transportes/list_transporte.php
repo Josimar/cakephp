@@ -42,7 +42,34 @@ $this->Html->css([
                   </tr>
                   </thead>
                   <tbody>
-
+                    <?php
+                    if (count($transportes) > 0){
+                      foreach($transportes as $index => $transporte){
+                        ?>
+                        <tr>
+                          <td><?= $transporte->id ?></td>
+                          <td><?= $transporte->nome ?></td>
+                          <td><?= $transporte->descricao ?></td>
+                          <td>
+                            <?= $transporte->tipo ?><br />
+                            <?php 
+                            if (isset($transporte->urlfoto) && $transporte->urlfoto !== '') {
+                              echo($this->Html->image("/upload/".$transporte->urlfoto, ["style"=>"width:70px;height:70px"]));
+                            }
+                            ?>
+                          </td>
+                          <td nowrap>
+                            <form id="frm-delete-transporte-<?= $transporte->id ?>" action="<?= $this->Url->build('/admin/delete-transporte/'.$transporte->id, ['fullBase'=>true]) ?>" method="post">
+                              <input type="hidden" value="<?= $transporte->id ?>" name="id" id="id">
+                            </form>
+                            <a href="<?= $this->Url->build('/admin/edit-transporte/'.$transporte->id, ['fullBase'=>true]) ?>" class="btn btn-warning"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="javascript:void(0)" onclick="if(confirm('Are you sure want to delete?')){ $('#frm-delete-transporte-<?= $transporte->id ?>').submit() }" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a>
+                          </td>
+                        </tr>
+                        <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>

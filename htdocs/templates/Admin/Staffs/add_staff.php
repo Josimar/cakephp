@@ -37,7 +37,11 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
              <h3 class="card-title">Add Stuff</h3>
             </div>
             <div class="card-body">
-            <form id="frm-add-stuff">
+            <?= $this->Form->create($staff, [
+                "id" => "frm-add-staff",
+                "type" => "file"
+            ])
+            ?>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -63,24 +67,6 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
                         <div class="form-group">
                             <label>Address</label>
                             <textarea name="address" id="address" placeholder="Enter address" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Select College *</label>
-                            <select required class="form-control" name="collegeid" id="collegeid">
-                                <option value='1'>Sample College</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Select Branch *</label>
-                            <select required class="form-control" name="branchid" id="branchid">
-                                <option value='1'>Sample Branch</option>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -165,7 +151,7 @@ $this->Html->css(["pickmeup.css"],["block"=>"TopStyleLinks"])
                         </div>
                     </div>
                 </div>
-            </form>
+            <?= $this->Form->end() ?>
             </div>
         </div>
         </div>
@@ -184,7 +170,7 @@ $this->Html->script([
 
 <?php
 $this->Html->scriptStart(["block"=>true]);
-echo('$("#frm-add-stuff").validate();');
+echo('$("#frm-add-staff").validate();');
 echo('pickmeup("input#dob", {hide_on_select: true, position: "right"});');
 $this->Html->scriptEnd();
 ?>

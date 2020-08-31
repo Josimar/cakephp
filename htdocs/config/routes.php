@@ -33,11 +33,29 @@ Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/edit-staff/:id", ["controller"=>"Staffs", "action"=>"editStaff"], ["pass"=>["id"]]);
     $route->connect("/delete-staff/:id", ["controller"=>"Staffs", "action"=>"deleteStaff"], ["pass"=>["id"]]);
 
+    // Categorias routes
+    $route->connect("/add-categoria", ["controller"=>"Categorias", "action"=>"addCategoria"]);
+    $route->connect("/list-categoria", ["controller"=>"Categorias", "action"=>"listCategoria"]);
+    $route->connect("/edit-categoria/:id", ["controller"=>"Categorias", "action"=>"editCategoria"], ["pass"=>["id"]]);
+    $route->connect("/delete-categoria/:id", ["controller"=>"Categorias", "action"=>"deleteCategoria"], ["pass"=>["id"]]);
+
+    // Tarefas routes
+    $route->connect("/add-tarefa", ["controller"=>"Tarefas", "action"=>"addTarefa"]);
+    $route->connect("/list-tarefa", ["controller"=>"Tarefas", "action"=>"listTarefa"]);
+    $route->connect("/edit-tarefa/:id", ["controller"=>"Tarefas", "action"=>"editTarefa"], ["pass"=>["id"]]);
+    $route->connect("/delete-tarefa/:id", ["controller"=>"Tarefas", "action"=>"deleteTarefa"], ["pass"=>["id"]]);
+
     // Papeis routes
     $route->connect("/add-papel", ["controller"=>"Papeis", "action"=>"addPapel"]);
     $route->connect("/list-papel", ["controller"=>"Papeis", "action"=>"listPapel"]);
     $route->connect("/edit-papel/:id", ["controller"=>"Papeis", "action"=>"editPapel"], ["pass"=>["id"]]);
     $route->connect("/delete-papel/:id", ["controller"=>"Papeis", "action"=>"deletePapel"], ["pass"=>["id"]]);
+
+    // Users routes
+    $route->connect("/add-user", ["controller"=>"Users", "action"=>"addUser"]);
+    $route->connect("/list-user", ["controller"=>"Users", "action"=>"listUser"]);
+    $route->connect("/edit-user/:id", ["controller"=>"Users", "action"=>"editUser"], ["pass"=>["id"]]);
+    $route->connect("/delete-user/:id", ["controller"=>"Users", "action"=>"deleteUser"], ["pass"=>["id"]]);
 
     // Permissao routes
     $route->connect("/add-permissao", ["controller"=>"Permissoes", "action"=>"addPermissao"]);
@@ -63,6 +81,10 @@ Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/permissao-report", ["controller"=>"Reports", "action"=>"permissaoReports"]);
 
     $route->connect("/allot-college", ["controller"=>"Students", "action"=>"getCollegeBranches"]);
+    $route->connect("/assign-college", ["controller"=>"Students", "action"=>"assignCollegeBranch"]);
+    $route->connect("/assign-college-staff", ["controller"=>"Staffs", "action"=>"assignCollegeBranch"]);
+    $route->connect("/remove-assigned-college/:id", ["controller"=>"Students", "action"=>"removeAssignedCollegeBranch"], ["pass"=>[""]]);
+    $route->connect("/remove-assigned-college-staff/:id", ["controller"=>"Staffs", "action"=>"removeAssignedCollegeBranch"], ["pass"=>[""]]);
 });
 
 $routes->scope('/', function (RouteBuilder $builder) {
