@@ -11,12 +11,12 @@ $this->Html->css([
   <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1>List Staff</h1>
+        <h1>Staff Report</h1>
         </div>
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">List Staff</li>
+            <li class="breadcrumb-item active">Staff Report</li>
         </ol>
         </div>
     </div>
@@ -29,7 +29,7 @@ $this->Html->css([
         <div class="col-md-12">
             <div class="card card-secondary">
                 <div class="card-header">
-                    <h3 class="card-title">List Staff</h3>
+                    <h3 class="card-title">Staff Report</h3>
                 </div>
                 <div class="card-body">
                 <table id="tbl-staff-report" class="table table-bordered table-striped">
@@ -38,26 +38,56 @@ $this->Html->css([
                     <th>#ID</th>
                     <th>Staff Info</th>
                     <th>College/Branch</th>
-                    <th>Designation</th>
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-
+                  <?php
+                      if (count($staffs) > 0){
+                        foreach($staffs as $index => $staff){
+                          ?>
+                          <tr>
+                            <td><?= $staff->id ?></td>
+                            <td>
+                              <?= "<b>Name: </b>".$staff->name ?><br/>
+                              <?= "<b>Email: </b>".$staff->email ?><br/>
+                              <?= "<b>Phone: </b>".$staff->phone ?><br/>
+                              <?= "<b>BG: </b>".$staff->bloodgroup ?><br/>
+                              <?= "<b>Staff Type: </b>".$staff->stafftype ?><br/>
+                              <?= "<b>Designation: </b>".$staff->designation ?>
+                            </td>
+                            <td>
+                              <?php
+                              // dd($staff);
+                              if (isset($staff->staff_college->name) && isset($staff->staff_branch->name)){
+                                echo "<b>College:</b> ".$staff->staff_college->name;
+                                echo "<br />";
+                                echo "<b>Branch:</b> ".$staff->staff_branch->name;
+                                echo "<br />";
+                              }else{
+                                echo '<i>N/A</i>';
+                              }
+                              ?>
+                            </td>
+                            <td><?= strtoupper($staff->gender) ?></td>
+                            <td><?= $this->Html->image("/upload/".$staff->urlimage, ["style"=>"width:70px;height:70px"]) ?></td>
+                            <td><?= $staff->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>" ?></td>
+                          </tr>
+                          <?php
+                        }
+                      }
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>
                     <th>#ID</th>
                     <th>Staff Info</th>
                     <th>College/Branch</th>
-                    <th>Designation</th>
                     <th>Gender</th>
                     <th>Profile Image</th>
                     <th>Status</th>
-                    <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>

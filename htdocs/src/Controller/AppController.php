@@ -43,6 +43,40 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Authentication.Authentication');
+
+        // Load auth component
+        $this->loadComponent("Auth", [
+            "userModel" => "Users",
+            "authenticate" => [
+                "Form" => [
+                    "fields" => [
+                        "username" => "email",
+                        "password" => "password"
+                    ],
+                    "userModel" => "Users"
+                ]
+            ],
+            "loginAction" => [
+                "controller" => "Users",
+                "action" => "login",
+                "prefix" => "Admin"
+            ],
+            "loginRedirect" => [
+                "controller" => "Dashboards",
+                "action" => "index",
+                "prefix" => "Admin"
+            ],
+            "logoutRedirect" => [
+                "controller" => "Users",
+                "action" => "login",
+                "prefix" => "Admin"
+            ]
+        ]);
+
+        function beforeRender(\Cake\Event\EventInterface $event){
+            $this->set("Auth", $this->Auth->user());
+        }
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

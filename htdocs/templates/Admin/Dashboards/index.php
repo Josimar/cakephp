@@ -22,11 +22,10 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-        <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
+                <h3><?= $userCount ?></h3>
                 <p>Total Users</p>
               </div>
               <div class="icon">
@@ -39,8 +38,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
+                <h3><?= $collegeCount ?></h3>
                 <p>Total Colleges</p>
               </div>
               <div class="icon">
@@ -53,8 +51,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
+              <h3><?= $studentCount ?></h3>
                 <p>Total Students</p>
               </div>
               <div class="icon">
@@ -66,8 +63,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
+                <h3><?= $staffCount ?></h3>
                 <p>Total Staffs</p>
               </div>
               <div class="icon">
@@ -80,22 +76,7 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
-                <p>Total Transporte</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="<?= $this->Url->build('/admin/transporte-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to Transportes Report <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-6">
-            <div class="small-box bg-dark">
-              <div class="inner">
-                <h3>0</h3>
-
+                <h3><?= $papelCount ?></h3>
                 <p>Total Papel</p>
               </div>
               <div class="icon">
@@ -108,14 +89,52 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>0</h3>
-
+                <h3><?= $permissaoCount ?></h3>
                 <p>Total Permissões</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
               <a href="<?= $this->Url->build('/admin/permissao-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to Permissão Report <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-dark">
+              <div class="inner">
+                <h3><?= $categoriaCount ?></h3>
+                <p>Total Categoria</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="<?= $this->Url->build('/admin/categoria-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to Categorias Report <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-dark">
+              <div class="inner">
+                <h3><?= $tarefaCount ?></h3>
+                <p>Total Tarefas</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="<?= $this->Url->build('/admin/tarefa-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to Tarefas Report <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-dark">
+              <div class="inner">
+                <h3><?= $transporteCount ?></h3>
+                <p>Total Transporte</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="<?= $this->Url->build('/admin/transporte-report', ['fullbase'=>true]) ?>" class="small-box-footer">Go to Transportes Report <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 

@@ -11,12 +11,12 @@ $this->Html->css([
   <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1>List College</h1>
+        <h1>College Report</h1>
         </div>
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">List College</li>
+            <li class="breadcrumb-item active">College Report</li>
         </ol>
         </div>
     </div>
@@ -29,7 +29,7 @@ $this->Html->css([
         <div class="col-md-12">
             <div class="card card-secondary">
                 <div class="card-header">
-                    <h3 class="card-title">List College</h3>
+                    <h3 class="card-title">College Report</h3>
                 </div>
                 <div class="card-body">
                 <table id="tbl-branch-report" class="table table-bordered table-striped">
@@ -39,11 +39,25 @@ $this->Html->css([
                     <th>College Info</th>
                     <th>Short Name</th>
                     <th>Cover Image</th>
-                    <th>Action</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
-
+                  <?php
+                      if (count($colleges) > 0){
+                        foreach($colleges as $index => $college){
+                          ?>
+                          <tr>
+                            <td><?= $college->id ?></td>
+                            <td><?= "<b>Name:</b> ".$college->name."<br/><b>Email:</b> ".$college->email."<br/><b>Phone:</b> ".$college->phone ?></td>
+                            <td><?= $college->shortname ?></td>
+                            <td><?= $this->Html->image("/upload/".$college->imageurl, ["style"=>"width:70px;height:70px"]) ?></td>
+                            <td><?= $college->status == 1 ? "<button class='btn btn-success'>Active</button>" : "<button class='btn btn-danger'>Inactive</button>" ?></td>
+                          </tr>
+                          <?php
+                        }
+                      }
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>
@@ -51,7 +65,7 @@ $this->Html->css([
                     <th>College Info</th>
                     <th>Short Name</th>
                     <th>Cover Image</th>
-                    <th>Action</th>
+                    <th>Status</th>
                   </tr>
                   </tfoot>
                 </table>

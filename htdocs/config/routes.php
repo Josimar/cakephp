@@ -9,6 +9,10 @@ $routes->setRouteClass(DashedRoute::class);
 Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/", ["controller"=>"Dashboards", "action"=>"index"]);
 
+    $route->connect("/users/login", ["controller"=>"Users", "action"=>"login"]);
+    $route->connect("/users/dashboard", ["controller"=>"Users", "action"=>"index"]);
+    $route->connect("/users/logout", ["controller"=>"Users", "action"=>"logout"]);
+
     // Colleges routes
     $route->connect("/add-college", ["controller"=>"Colleges", "action"=>"addCollege"]);
     $route->connect("/list-colleges", ["controller"=>"Colleges", "action"=>"listCollege"]);
