@@ -10,6 +10,7 @@ class TarefasController extends AppController{
         parent::initialize();
         $this->viewBuilder()->setLayout("admin");
 
+        $this->loadComponent('Paginator');
         $this->loadModel("Tarefas");
     }
 
@@ -47,6 +48,10 @@ class TarefasController extends AppController{
     }
 
     public function listTarefa(){
+        $this->paginate = ['limit' => '10'];
+        $tarefas = $this->paginate($this->Tarefas->find('all'));
+
+        $this->set(compact("tarefas"));
         $this->set("title", "List Tarefa");
     }
     

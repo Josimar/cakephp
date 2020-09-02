@@ -10,6 +10,7 @@ class CategoriasController extends AppController{
         parent::initialize();
         $this->viewBuilder()->setLayout("admin");
 
+        $this->loadComponent('Paginator');
         $this->loadModel("Categorias");
     }
 
@@ -33,6 +34,10 @@ class CategoriasController extends AppController{
     }
 
     public function listCategoria(){
+        $this->paginate = ['limit' => '15'];
+        $categorias = $this->paginate($this->Categorias->find('all'));
+        
+        $this->set(compact("categorias"));
         $this->set("title", "List Categoria");
     }
     

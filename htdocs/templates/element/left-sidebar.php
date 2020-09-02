@@ -6,7 +6,7 @@
         $this->Html->image("/dist/img/AdminLTELogo.png", 
           ["alt"=>"Logo", "class"=>"brand-image img-circle elevation-3", "style"=>"opacity: .8"]
         ) ?>
-      <span class="brand-text font-weight-light">Academic</span>
+      <span class="brand-text font-weight-light">Controle</span>
     </a>
 
     <!-- Sidebar -->
@@ -20,7 +20,7 @@
           ) ?>
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?= $Auth["name"] ?><br /><?= $auth["email"] ?></a>
+          <a href="#" class="d-block"><?= $Auth["name"] ?><br /><?= $Auth["email"] ?></a>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
           </li> 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-university"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Manage Users
                 <i class="right fas fa-angle-left"></i>
@@ -106,7 +106,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-graduation-cap"></i>
+              <i class="nav-icon fas fa-child"></i>
               <p>
                 Manage Student
                 <i class="right fas fa-angle-left"></i>
@@ -175,7 +175,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+              <i class="nav-icon fas fa-user-lock"></i>
               <p>
                 Manage Papeis
                 <i class="right fas fa-angle-left"></i>
@@ -198,7 +198,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+              <i class="nav-icon fa fa-lock"></i>
               <p>
                 Manage Permissão
                 <i class="right fas fa-angle-left"></i>
@@ -212,7 +212,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= $this->Url->build('/admin/list-permissoes', ['fullbase'=>true]) ?>" class="nav-link">
+                <a href="<?= $this->Url->build('/admin/list-permissao', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Permissão</p>
                 </a>
@@ -221,7 +221,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+              <i class="nav-icon fa fa-list-alt"></i>
               <p>
                 Manage Categoria
                 <i class="right fas fa-angle-left"></i>
@@ -235,7 +235,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= $this->Url->build('/admin/list-categorias', ['fullbase'=>true]) ?>" class="nav-link">
+                <a href="<?= $this->Url->build('/admin/list-categoria', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Categoria</p>
                 </a>
@@ -244,7 +244,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-car"></i>
+              <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Manage Tarefa
                 <i class="right fas fa-angle-left"></i>
@@ -258,7 +258,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= $this->Url->build('/admin/list-tarefas', ['fullbase'=>true]) ?>" class="nav-link">
+                <a href="<?= $this->Url->build('/admin/list-tarefa', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Tarefa</p>
                 </a>
@@ -267,7 +267,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tasks"></i>
+              <i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 Reports
                 <i class="right fas fa-angle-left"></i>

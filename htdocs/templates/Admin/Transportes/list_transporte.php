@@ -59,6 +59,13 @@ $this->Html->css([
                             ?>
                           </td>
                           <td nowrap>
+                            <?= $this->Form->create($transporte, [
+                                    "id"=>"frm-delete-transporte-".$transporte->id,
+                                    "action"=> $this->Url->build('/admin/delete-transporte/'.$transporte->id, ['fullBase'=>true])
+                                ])
+                            ?>
+                            <input type="hidden" value="<?= $transporte->id ?>" name="id" id="id">
+                            <?= $this->Form->end() ?>
                             <form id="frm-delete-transporte-<?= $transporte->id ?>" action="<?= $this->Url->build('/admin/delete-transporte/'.$transporte->id, ['fullBase'=>true]) ?>" method="post">
                               <input type="hidden" value="<?= $transporte->id ?>" name="id" id="id">
                             </form>

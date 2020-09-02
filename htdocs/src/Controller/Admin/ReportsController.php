@@ -18,7 +18,7 @@ class ReportsController extends AppController{
     public function collegeReports(){
         $colleges = $this->Colleges->find()->toList();
         $this->set(compact("colleges"));
-        $this->set("title", "College Report | Academics Management");
+        $this->set("title", "College Report | Management");
     }
 
     public function studentReports(){
@@ -31,7 +31,7 @@ class ReportsController extends AppController{
             }
         ])->toList();
         $this->set(compact("students"));
-        $this->set("title", "Student Report | Academics Management");
+        $this->set("title", "Student Report | Management");
     }
     
     public function staffReports(){
@@ -44,23 +44,31 @@ class ReportsController extends AppController{
             }
         ])->toList();
         $this->set(compact("staffs"));
-        $this->set("title", "Staff Report | Academics Management");
+        $this->set("title", "Staff Report | Management");
     }
 
     public function papelReports(){
-        $this->set("title", "Papel Report | Academics Management");
+        $this->set("title", "Papel Report | Management");
     }      
 
     public function permissaoReports(){
-        $this->set("title", "Permissão Report | Academics Management");
+        $this->set("title", "Permissão Report | Management");
     }      
 
     public function transporteReports(){
-        $this->set("title", "Transporte Report | Academics Management");
+        $this->set("title", "Transporte Report | Management");
+    }      
+
+    public function categoriaReports(){
+        $this->set("title", "Categoria Report | Management");
+    }      
+
+    public function tarefaReports(){
+        $this->set("title", "Tarefa Report | Management");
     }      
 
     public function userReports(){
-        $this->set("title", "Users Report | Academics Management");
+        $this->set("title", "Users Report | Management");
     }     
 
 }

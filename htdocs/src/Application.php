@@ -148,11 +148,12 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             IdentifierInterface::CREDENTIAL_USERNAME => 'email',
             IdentifierInterface::CREDENTIAL_PASSWORD => 'password'
         ];
+
         // Load the authenticators. Session should be first.
         $service->loadAuthenticator('Authentication.Session');
         $service->loadAuthenticator('Authentication.Form', [
             'fields' => $fields,
-            'loginUrl' => 'admin/users/login'
+            'loginUrl' => $_SERVER['REQUEST_URI'] // '/cakephp/admin/users/login'
         ]);
 
         // Load identifiers

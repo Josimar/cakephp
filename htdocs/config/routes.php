@@ -82,7 +82,8 @@ Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/transporte-report", ["controller"=>"Reports", "action"=>"transporteReports"]);
     $route->connect("/user-report", ["controller"=>"Reports", "action"=>"userReports"]);
     $route->connect("/papel-report", ["controller"=>"Reports", "action"=>"papelReports"]);
-    $route->connect("/permissao-report", ["controller"=>"Reports", "action"=>"permissaoReports"]);
+    $route->connect("/tarefa-report", ["controller"=>"Reports", "action"=>"tarefaReports"]);
+    $route->connect("/categoria-report", ["controller"=>"Reports", "action"=>"categoriaReports"]);
 
     $route->connect("/allot-college", ["controller"=>"Students", "action"=>"getCollegeBranches"]);
     $route->connect("/assign-college", ["controller"=>"Students", "action"=>"assignCollegeBranch"]);
@@ -97,14 +98,11 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->fallbacks();
 });
 
-/*
- * If you need a different set of middleware or none at all,
- * open new scope and define routes there.
- *
- * ```
- * $routes->scope('/api', function (RouteBuilder $builder) {
- *     // No $builder->applyMiddleware() here.
- *     // Connect API actions here.
- * });
- * ```
- */
+$routes->scope('/api', function (RouteBuilder $builder) {
+     // No $builder->applyMiddleware() here.
+     // Connect API actions here.
+});
+
+Router::scope('/api', ['_namePrefix' => 'api:'], function (RouteBuilder $routes) {
+    $routes->get('/ping', ['controller' => 'Pings'], 'ping');
+});
