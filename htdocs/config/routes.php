@@ -56,10 +56,10 @@ Router::prefix("admin", function(RouteBuilder $route){
     $route->connect("/delete-papel/:id", ["controller"=>"Papeis", "action"=>"deletePapel"], ["pass"=>["id"]]);
 
     // Users routes
-    $route->connect("/add-user", ["controller"=>"Users", "action"=>"addUser"]);
-    $route->connect("/list-user", ["controller"=>"Users", "action"=>"listUser"]);
-    $route->connect("/edit-user/:id", ["controller"=>"Users", "action"=>"editUser"], ["pass"=>["id"]]);
-    $route->connect("/delete-user/:id", ["controller"=>"Users", "action"=>"deleteUser"], ["pass"=>["id"]]);
+    $route->connect("/add-user", ["controller"=>"Usuarios", "action"=>"addUser"]);
+    $route->connect("/list-user", ["controller"=>"Usuarios", "action"=>"listUser"]);
+    $route->connect("/edit-user/:id", ["controller"=>"Usuarios", "action"=>"editUser"], ["pass"=>["id"]]);
+    $route->connect("/delete-user/:id", ["controller"=>"Usuarios", "action"=>"deleteUser"], ["pass"=>["id"]]);
 
     // Permissao routes
     $route->connect("/add-permissao", ["controller"=>"Permissoes", "action"=>"addPermissao"]);

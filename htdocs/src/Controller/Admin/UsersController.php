@@ -12,7 +12,7 @@ class UsersController extends AppController{
     public function initialize(): void{
         parent::initialize();
         $this->viewBuilder()->setLayout("user");
-        $this->loadModel("User");
+        $this->loadModel("Users");
         $this->Authentication->allowUnauthenticated(['index', 'login']);
     }
 
@@ -60,11 +60,6 @@ class UsersController extends AppController{
         */
 
         $this->set("title", "Controle | Login");
-    }
-
-    public function dashboard(){
-        $this->autoRender = false;
-        echo "<h3>This is dashboard page</h3>";
     }
 
     public function logout(){

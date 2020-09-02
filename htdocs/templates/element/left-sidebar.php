@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= $this->Url->build('/admin/list-users', ['fullbase'=>true]) ?>" class="nav-link">
+                <a href="<?= $this->Url->build('/admin/list-user', ['fullbase'=>true]) ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List User</p>
                 </a>
